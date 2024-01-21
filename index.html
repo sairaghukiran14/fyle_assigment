@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fyle Assignment</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="main">
+      <div class="user_content_section">
+        <div class="top_section">
+          <div class="user_info">
+            <!--  -->
+          </div>
+          <form id="form" onsubmit="getUser()">
+            <input
+              type="text"
+              id="search"
+              autofocus
+              placeholder="Search for a User"
+            />
+            <input type="text" id="per_page" placeholder="PerPage" />
+            <button>Search</button>
+          </form>
+        </div>
+        <div class="search">
+          <h2>Repositories :</h2>
+
+          <input
+            type="text"
+            placeholder="Enter Repository Name to Search"
+            id="searchitem"
+            required
+          />
+          <button type="button" onclick="searchRepos()">Search</button>
+        </div>
+        <div class="repos_section"></div>
+      </div>
+      <div class="pagination"></div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
