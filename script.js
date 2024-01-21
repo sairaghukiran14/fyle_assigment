@@ -27,6 +27,7 @@ const getUser = async () => {
 
   if (isloading == true) {
     let newimage = document.createElement("img");
+    newimage.classList.add("load");
     newimage.src = "loader.gif";
     repos.appendChild(newimage);
   }
@@ -59,6 +60,13 @@ const getUser = async () => {
 };
 
 const getRepos = async (perpage, user_name, page_no) => {
+  if (isloading == true) {
+    let newimage = document.createElement("img");
+    newimage.classList.add("load");
+    newimage.src = "loader.gif";
+    repos.innerHTML = "";
+    repos.appendChild(newimage);
+  }
   const response = await fetch(
     API_URI + user_name + `/repos?per_page=${perpage}&page=${page_no}`
   );
@@ -112,7 +120,7 @@ const pageHandler = (per_page, page_no) => {
 
       Object.entries(pageId).forEach((element) => {
         if (element[1].innerText === page_no) {
-          element[1].style.backgroundColor = "purple";
+          element[1].style.backgroundColor = "blue";
           element[1].style.color = "white";
         } else {
           element[1].style.backgroundColor = "white";
@@ -131,26 +139,3 @@ const pageHandler = (per_page, page_no) => {
     }
   });
 };
-
-const pageno = document.querySelector(".pageno");
-console.log(pageno);
-// pageno.addEventListener("onClick", function () {
-//   console.log(pageno);
-// });
-
-function search() {
-  var input = document.getElementById("myInput");
-  var filter = input.value.toUpperCase();
-  var book = books.getElementsByClassName("book");
-  for (i = 0; i < book.length; i++) {
-    let re = new RegExp(input.value, "i");
-    var a = book[i].getElementsByClassName("namee")[0];
-    var txtValue = a.textContent || a.innerText;
-    a.innerHTML = a.textContent.replace(re, "<b>$&</b>");
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      book[i].style.display = "";
-    } else {
-      book[i].style.display = "none";
-    }
-  }
-}
